@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import '../styles/fentity-directory.css'
+import {Link} from 'react-router-dom'
 
 class Fentities extends Component {
     render() {
         const fentitiesCategory = this.props.match.params.fentities
         const fentities = fentitiesCategory==='wizards' ? this.props.state.wizards : this.props.state.bestiary
+
         console.log(fentities)
         return (
             <div>
@@ -14,7 +16,7 @@ class Fentities extends Component {
                         return (
                             <div className="mini">
                                 <img className="directory-img" src={f.imgUrl} alt="" />
-                                <span>{f.name}</span>
+                                <span><Link to={`/directory/:fentities/${f.name}`}>{f.name}</Link></span>
                             </div>
                         )
                     })}
